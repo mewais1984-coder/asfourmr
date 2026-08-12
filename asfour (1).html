@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عصفور للتعدين والحراريات | Asfour M&R</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#1a1512;
+    --charcoal-2:#241d18;
+    --brick:#a63d1f;
+    --brick-dark:#7c2c15;
+    --ember:#f2762e;
+    --sand:#efe8dc;
+    --paper:#faf6ef;
+    --steel:#5a5650;
+    --line: rgba(239,232,220,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--charcoal);
+    font-family:'Tajawal',sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.brand,.nav a,.stat-num,.eyebrow{font-family:'Tajawal',sans-serif;}
+  .disp{font-family:'Oswald',sans-serif; letter-spacing:0.02em;}
+
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  /* brick-coursing texture, used as signature motif */
+  .brickline{
+    height:14px;
+    background-image:
+      linear-gradient(90deg, transparent 0 2px, var(--line) 2px 4px),
+      linear-gradient(var(--charcoal), var(--charcoal));
+    background-size: 64px 100%, 100% 100%;
+  }
+  .brickline.alt{
+    background-image:
+      linear-gradient(90deg, transparent 32px, var(--line) 32px 34px, transparent 34px, var(--line) 66px 68px),
+      linear-gradient(var(--charcoal), var(--charcoal));
+    background-size: 64px 100%, 100% 100%;
+  }
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(26,21,18,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:1180px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{height:44px; width:44px; border-radius:8px; object-fit:cover; background:#fff; padding:2px;}
+  .brand-text{color:var(--paper);}
+  .brand-text .ar{font-weight:900; font-size:1.05rem; line-height:1.1;}
+  .brand-text .en{font-family:'Oswald',sans-serif; font-size:0.68rem; letter-spacing:0.14em; color:var(--ember); text-transform:uppercase;}
+  nav.links{display:flex; gap:28px;}
+  nav.links a{color:var(--sand); font-size:0.92rem; font-weight:500; position:relative; padding:6px 0; transition:color .2s;}
+  nav.links a:hover{color:var(--ember);}
+  .nav-cta{
+    display:flex; align-items:center; gap:8px;
+    background:#25D366; color:#0e1a12; font-weight:700; font-size:0.88rem;
+    padding:9px 16px; border-radius:999px; white-space:nowrap;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .nav-cta:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(37,211,102,0.35);}
+  .menu-btn{display:none;}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    background:var(--charcoal);
+    color:var(--paper);
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1180px; margin:0 auto; padding:88px 24px 96px;
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    color:var(--ember); font-weight:700; font-size:0.82rem; letter-spacing:0.12em;
+    text-transform:uppercase; margin-bottom:22px;
+  }
+  .eyebrow::before{content:""; width:26px; height:2px; background:var(--ember); display:inline-block;}
+  .hero h1{
+    font-size:clamp(2.1rem, 4.2vw, 3.4rem);
+    font-weight:900; line-height:1.18; margin-bottom:22px;
+  }
+  .hero h1 span{color:var(--ember);}
+  .hero p{
+    font-size:1.05rem; line-height:1.85; color:rgba(250,246,239,0.8);
+    max-width:52ch; margin-bottom:34px;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 26px; border-radius:6px; font-weight:700; font-size:0.95rem;
+    transition:transform .15s ease, box-shadow .15s ease, background .2s ease;
+  }
+  .btn-primary{background:var(--brick); color:var(--paper);}
+  .btn-primary:hover{background:var(--ember); transform:translateY(-2px); box-shadow:0 10px 24px rgba(242,118,46,0.3);}
+  .btn-ghost{border:1px solid rgba(250,246,239,0.3); color:var(--paper);}
+  .btn-ghost:hover{border-color:var(--ember); color:var(--ember);}
+
+  .hero-media{position:relative; border-radius:10px; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,0.45);}
+  .hero-media img{width:100%; height:460px; object-fit:cover; filter:saturate(1.05) contrast(1.05);}
+  .glow{
+    position:absolute; inset:auto -20% -30% auto; width:60%; height:60%;
+    background:radial-gradient(circle, rgba(242,118,46,0.55), transparent 70%);
+    filter:blur(10px); pointer-events:none; animation:pulse 6s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:0.55;} 50%{opacity:0.9;}}
+
+  .stat-strip{
+    background:var(--charcoal-2); border-top:1px solid var(--line);
+    padding:0;
+  }
+  .stat-grid{
+    max-width:1180px; margin:0 auto; padding:26px 24px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center;
+  }
+  .stat-num{font-family:'Oswald',sans-serif; font-size:2rem; font-weight:700; color:var(--ember);}
+  .stat-label{color:var(--sand); font-size:0.82rem; opacity:0.75; margin-top:4px;}
+
+  section{padding:96px 24px;}
+  .container{max-width:1180px; margin:0 auto;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head .eyebrow{color:var(--brick);}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.4rem); font-weight:900; line-height:1.25;}
+  .section-head p{margin-top:14px; color:var(--steel); font-size:1rem; line-height:1.8;}
+
+  /* ABOUT */
+  .about{background:var(--paper);}
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center;}
+  .about-img{position:relative;}
+  .about-img img{border-radius:10px; width:100%; height:420px; object-fit:cover;}
+  .about-img::before{
+    content:""; position:absolute; top:-18px; right:-18px; width:100%; height:100%;
+    border:2px solid var(--brick); border-radius:10px; z-index:-1;
+  }
+  .about-text p{color:var(--steel); line-height:1.9; margin-bottom:18px; font-size:1.02rem;}
+  .about-text strong{color:var(--brick-dark);}
+
+  /* GALLERY */
+  .gallery{background:var(--paper);}
+  .gal-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:180px;
+    gap:12px;
+  }
+  .gal-item{
+    border-radius:10px; overflow:hidden; position:relative;
+  }
+  .gal-item img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .5s ease, filter .5s ease;
+    filter:saturate(1.02);
+  }
+  .gal-item:hover img{transform:scale(1.06);}
+  .gal-item.big{grid-column:span 2; grid-row:span 2;}
+
+  /* PRODUCTS */
+  .products{background:var(--charcoal); color:var(--paper);}
+  .products .section-head .eyebrow{color:var(--ember);}
+  .products .section-head p{color:rgba(250,246,239,0.7);}
+  .products .section-head h2{color:var(--paper);}
+  .prod-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .prod-card{
+    background:var(--charcoal-2); padding:32px 26px; transition:background .25s ease;
+    position:relative;
+  }
+  .prod-card:hover{background:#2c2119;}
+  .prod-num{font-family:'Oswald',sans-serif; color:var(--ember); font-size:0.8rem; letter-spacing:0.1em; opacity:0.8;}
+  .prod-card h3{margin:14px 0 10px; font-size:1.15rem; font-weight:700;}
+  .prod-card p{color:rgba(250,246,239,0.65); font-size:0.9rem; line-height:1.7;}
+
+  /* INDUSTRIES */
+  .industries{background:var(--sand);}
+  .ind-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  .ind-item{
+    background:var(--paper); border:1px solid rgba(90,86,80,0.15); border-radius:8px;
+    padding:22px 18px; text-align:center; font-weight:700; font-size:0.95rem;
+    color:var(--charcoal); transition:border-color .2s, transform .2s;
+  }
+  .ind-item:hover{border-color:var(--brick); transform:translateY(-3px);}
+
+  /* CONTACT */
+  .contact{background:var(--charcoal); color:var(--paper); position:relative; overflow:hidden;}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .contact h2{font-size:clamp(1.7rem,3vw,2.3rem); font-weight:900; margin-bottom:18px;}
+  .contact > .container > p{color:rgba(250,246,239,0.7); line-height:1.85; max-width:48ch; margin-bottom:32px;}
+  .info-row{display:flex; align-items:flex-start; gap:14px; margin-bottom:22px;}
+  .info-icon{
+    width:42px; height:42px; border-radius:8px; background:var(--brick);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem;
+  }
+  .info-row div .label{font-size:0.78rem; color:var(--ember); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:3px;}
+  .info-row div .val{font-size:1rem; color:var(--paper); font-weight:500;}
+  .wa-card{
+    background:linear-gradient(160deg, #1f7a4d, #17603c);
+    border-radius:14px; padding:40px 34px; text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,0.35);
+  }
+  .wa-card .wa-icon{font-size:2.6rem; margin-bottom:14px;}
+  .wa-card h3{font-size:1.35rem; font-weight:900; margin-bottom:10px;}
+  .wa-card p{color:rgba(250,246,239,0.85); font-size:0.95rem; margin-bottom:26px; line-height:1.7;}
+  .wa-card .btn-primary{background:#25D366; color:#0e1a12; width:100%; justify-content:center;}
+  .wa-card .btn-primary:hover{background:#2fe07a;}
+  .wa-number{margin-top:16px; font-family:'Oswald',sans-serif; letter-spacing:0.06em; color:var(--paper); font-size:1.1rem; direction:ltr; display:inline-block;}
+
+  footer{background:var(--charcoal-2); color:rgba(250,246,239,0.55); padding:32px 24px; text-align:center; font-size:0.85rem;}
+  footer a{color:var(--ember);}
+
+  .float-wa{
+    position:fixed; bottom:22px; left:22px; z-index:60;
+    width:58px; height:58px; border-radius:50%;
+    background:#25D366; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px rgba(37,211,102,0.45);
+    font-size:1.6rem; animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);}}
+
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr; padding-top:56px;}
+    .hero-media img{height:300px;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+    .about-grid{grid-template-columns:1fr;}
+    .about-img{margin-bottom:12px;}
+    .prod-grid{grid-template-columns:repeat(2,1fr);}
+    .ind-grid{grid-template-columns:repeat(2,1fr);}
+    .gal-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;}
+    .gal-item.big{grid-column:span 2; grid-row:span 1;}
+    .contact-grid{grid-template-columns:1fr; gap:36px;}
+    nav.links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="brand">
+      <img src="https://asfourmr.com/wp-content/uploads/2024/01/456-1-1-100x100.png" alt="شعار عصفور للتعدين والحراريات">
+      <div class="brand-text">
+        <div class="ar">عصفور للتعدين والحراريات</div>
+        <div class="en">Asfour Mining &amp; Refractories</div>
+      </div>
+    </div>
+    <nav class="links">
+      <a href="#about">من نحن</a>
+      <a href="#gallery">المصنع</a>
+      <a href="#products">منتجاتنا</a>
+      <a href="#industries">القطاعات</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/201026660472" target="_blank" rel="noopener">
+      واتساب 01026660472
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">مصنع حراريات مصري منذ عقود</div>
+      <h1>أعلى جودة في <span>المواد الحرارية</span>، وأكبر التزام في الخدمة</h1>
+      <p>نُنتج ونورّد الطوب الحراري والخرسانات والمونة والكاولين المكلسن لصناعات الحديد والصلب والأسمنت والسيراميك والزجاج، بخبرة تصل عملاءنا في أكثر من 27 دولة حول العالم.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/201026660472" target="_blank" rel="noopener">تواصل واتساب مباشر</a>
+        <a class="btn btn-ghost" href="#products">استعرض المنتجات</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="https://asfourmr.com/wp-content/uploads/2024/02/DSC_3577-copy-scaled.jpg" alt="مصنع عصفور للتعدين والحراريات">
+      <div class="glow"></div>
+    </div>
+  </div>
+</section>
+
+<div class="stat-strip">
+  <div class="stat-grid">
+    <div><div class="stat-num">+27</div><div class="stat-label">دولة حول العالم</div></div>
+    <div><div class="stat-num">6+</div><div class="stat-label">قطاعات صناعية</div></div>
+    <div><div class="stat-num">100+</div><div class="stat-label">منتج ومقاس</div></div>
+    <div><div class="stat-num">24/7</div><div class="stat-label">دعم فني وتوريد</div></div>
+  </div>
+</div>
+<div class="brickline"></div>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-img">
+      <img src="https://asfourmr.com/wp-content/uploads/2024/02/Img40773-copy-1024x790.jpg" alt="فريق عصفور للتعدين والحراريات">
+    </div>
+    <div class="about-text">
+      <div class="section-head" style="margin-bottom:24px;">
+        <div class="eyebrow">من نحن</div>
+        <h2>من "الشركة المصرية للحراريات" إلى أحد أعرق منتجي الحراريات بالمنطقة</h2>
+      </div>
+      <p>تأسست الشركة تحت اسم <strong>"الشركة المصرية للحراريات"</strong>، وتطورت لتصبح واحدة من أكبر وأعرق شركات إنتاج المواد الحرارية في المنطقة، محافظة على شعارها الدائم: <strong>"الأعلى في الجودة والأكبر في الخدمة"</strong>.</p>
+      <p>يعمل لدينا جيل من المهندسين والفنيين المدربين تدريباً عالياً، مكرّسون لخدمة عملائنا في صناعات الحديد والصلب، الأسمنت، الصناعات غير الحديدية، الأسمدة، السيراميك، وصناعة السكر، من خلال مصنع مصمم لتقديم تشكيلة واسعة من المنتجات بكفاءة وفعالية.</p>
+      <a class="btn btn-primary" href="https://wa.me/201026660472" target="_blank" rel="noopener" style="margin-top:10px;">اطلب عرض سعر عبر واتساب</a>
+    </div>
+  </div>
+</section>
+
+<div class="brickline alt"></div>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">من داخل المصنع</div>
+      <h2>لمحة من مصنع عصفور للتعدين والحراريات</h2>
+      <p>خط إنتاج متكامل وطاقم فني مدرب، بطاقة إنتاجية تتجاوز 100 ألف طن سنوياً من مواد الحراريات.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item big">
+        <img src="https://asfourmr.com/wp-content/uploads/2024/02/DSC_6344-copy-scaled.jpg" alt="خط إنتاج مصنع عصفور للحراريات" loading="lazy">
+      </div>
+      <div class="gal-item">
+        <img src="https://asfourmr.com/wp-content/uploads/2024/02/DSC_3855-copy-scaled.jpg" alt="مصنع عصفور للتعدين والحراريات" loading="lazy">
+      </div>
+      <div class="gal-item">
+        <img src="https://asfourmr.com/wp-content/uploads/2024/02/about-us.jpg" alt="منشأة عصفور للحراريات" loading="lazy">
+      </div>
+      <div class="gal-item">
+        <img src="https://asfourmr.com/wp-content/uploads/2024/02/Img40773-copy-1024x790.jpg" alt="فريق عصفور للتعدين والحراريات" loading="lazy">
+      </div>
+      <div class="gal-item">
+        <img src="https://asfourmr.com/wp-content/uploads/2024/02/DSC_3577-copy-scaled.jpg" alt="مصنع الطوب الحراري - عصفور" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="brickline"></div>
+
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">منتجاتنا</div>
+      <h2>تشكيلة واسعة من مواد الحراريات المُشكّلة وغير المُشكّلة</h2>
+      <p>من الطوب الحراري بأنواعه إلى الخرسانات والمونة والمواد الخام المُكلسنة، كل منتج مصمم وفق مواصفات فنية دقيقة لكل قطاع صناعي.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-num">01</div>
+        <h3>الطوب الحراري</h3>
+        <p>طوب خفيف الوزن، طوب ألومينا كثيف، طوب فاير كلاي، طوب كورديريت-موليت، وطوب مقاوم للأحماض.</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-num">02</div>
+        <h3>الخرسانات الحرارية</h3>
+        <p>خرسانات ألومينا خفيفة الوزن، خرسانات الأسمنت المنخفض، والخرسانات التقليدية والكورديريتية.</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-num">03</div>
+        <h3>المونة والشاموت</h3>
+        <p>مونة حرارية وباردة الالتصاق، مونة مقاومة للأحماض، ومونة الروابط الفوسفاتية، وشاموت بدرجات نقاء متعددة.</p>
+      </div>
+      <div class="prod-card">
+        <div class="prod-num">04</div>
+        <h3>البوكسيت والكاولين المكلسن</h3>
+        <p>بوكسيت مكلس بمقاسات ونسب نقاء مختلفة، وكاولين مكلسن لصناعات السيراميك والحراريات.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="industries" id="industries">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">القطاعات التي نخدمها</div>
+      <h2>حلول حرارية لكل صناعة ثقيلة</h2>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-item">الحديد والصلب</div>
+      <div class="ind-item">الأسمنت</div>
+      <div class="ind-item">السيراميك</div>
+      <div class="ind-item">الزجاج</div>
+      <div class="ind-item">الألومنيوم</div>
+      <div class="ind-item">البتروكيماويات</div>
+      <div class="ind-item">صناعة السكر</div>
+      <div class="ind-item">محطات الطاقة</div>
+    </div>
+  </div>
+</section>
+
+<div class="brickline"></div>
+
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div>
+      <div class="eyebrow" style="color:var(--ember);">تواصل معنا</div>
+      <h2>محتاج عرض سعر أو استشارة فنية؟</h2>
+      <p>فريقنا جاهز للرد على استفساراتكم الخاصة بالمنتجات والمقاسات ومواعيد التوريد. راسلونا مباشرة على واتساب وهنرد عليكم بأسرع وقت.</p>
+
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="label">الموقع</div>
+          <div class="val">كورنيش النيل - التبين، حلوان، القاهرة</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">☎️</div>
+        <div>
+          <div class="label">التليفون</div>
+          <div class="val" dir="ltr">+20 2 2544 4053</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="label">البريد الإلكتروني</div>
+          <div class="val" dir="ltr">info@asfourmr.com</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wa-card">
+      <div class="wa-icon">💬</div>
+      <h3>راسلنا على واتساب</h3>
+      <p>أسرع طريقة للتواصل معنا للاستفسار عن الأسعار والمقاسات والتوريد.</p>
+      <a class="btn btn-primary" href="https://wa.me/201026660472" target="_blank" rel="noopener">ابدأ محادثة واتساب</a>
+      <div class="wa-number">01026660472</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 عصفور للتعدين والحراريات — جميع الحقوق محفوظة
+</footer>
+
+<a class="float-wa" href="https://wa.me/201026660472" target="_blank" rel="noopener" aria-label="تواصل واتساب">💬</a>
+
+</body>
+</html>
